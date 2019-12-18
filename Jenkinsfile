@@ -51,6 +51,6 @@ pipeline {
 
 def gradlew(command) {
     sh '''
-        ./gradlew ${command}
+        ./gradlew "${command}"
     '''
 }
