@@ -12,14 +12,16 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                gradlew("clean")
+                gradlew(clean)
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo 'Unit Tests..'
-                gradlew("test")
+                sh '''
+                     ./gradlew test
+                '''
             }
             post {
                 always {
@@ -31,7 +33,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
-                    gradlew("build")
+                    sh '''
+                    ./gradlew build
+                '''
             }
         }
 
@@ -43,15 +47,14 @@ pipeline {
 
         stage('Automated Test') {
                     steps {
-                        echo 'Automated Testing..'
+                        echo 'Testing..'
                     }
                 }
     }
 }
 
 def gradlew(command) {
-                           echo 'gradlew.. ${command}'
-                           sh '''
-            ./gradlew "${command}"
-        '''
-    }
+    sh '''
+        ./gradlew ${command}
+    '''
+}
