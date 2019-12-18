@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Unit Tests..'
                 sh '''#!/bin/bash
-                ./gradlew test
+                     ./gradlew test
                 '''
             }
             post {
@@ -29,7 +29,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
-                ./gradlew build
+                    sh '''#!/bin/bash
+                    ./gradlew build
+                '''
             }
         }
 
