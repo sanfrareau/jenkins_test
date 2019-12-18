@@ -6,7 +6,9 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                gradlew('clean', 'classes')
+                sh '''#!/bin/bash
+                    ./gradlew clean
+                '''
             }
         }
 
