@@ -12,14 +12,14 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                gradlew(clean)
+                gradlew("clean")
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo 'Unit Tests..'
-                gradlew(test)
+                gradlew("test")
             }
             post {
                 always {
@@ -31,7 +31,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
-                    gradlew(build)
+                    gradlew("build")
             }
         }
 
