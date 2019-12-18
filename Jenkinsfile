@@ -47,10 +47,11 @@ pipeline {
                     }
                 }
     }
-}
-
 def gradlew(command) {
     sh '''
         ./gradlew "${command}"
     '''
 }
+
+}
+
