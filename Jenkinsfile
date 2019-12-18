@@ -15,7 +15,9 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo 'Unit Tests..'
+                sh '''#!/bin/bash
                 ./gradlew test
+                '''
             }
             post {
                 always {
