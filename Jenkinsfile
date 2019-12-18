@@ -12,8 +12,9 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                gradlew(clean)
-            }
+sh '''
+                     ./gradlew clean
+                '''            }
         }
 
         stage('Unit Tests') {
