@@ -1,23 +1,25 @@
+#!/usr/bin/groovy
+
 pipeline {
 	agent any
+
+    options {
+        disableConcurrentBuilds()
+        }
 
 	stages {
 
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                sh '''#!/bin/bash
-                    ./gradlew clean
-                '''
+                gradlew(clean)
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo 'Unit Tests..'
-                sh '''#!/bin/bash
-                     ./gradlew test
-                '''
+                gradlew(test)
             }
             post {
                 always {
@@ -29,15 +31,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
-                    sh '''#!/bin/bash
-                    ./gradlew build
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+                    gradlew(build)
             }
         }
 
@@ -46,5 +40,17 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+
+        stage('Automated Test') {
+                    steps {
+                        echo 'Automated Testing..'
+                    }
+                }
     }
+}
+
+def gradlew(command) {
+    sh '''
+        ./gradlew ${command}
+    '''
 }
