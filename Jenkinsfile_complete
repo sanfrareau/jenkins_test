@@ -52,10 +52,13 @@ pipeline {
                 }
     }
 }
-
-def gradlew(command) {
-    sh '''
-        echo this is the command ${command}
-        ./gradlew ${command}
-    '''
+//
+//def gradlew(command) {
+//    sh '''
+//        echo this is the command ${command}
+//        ./gradlew ${command}
+//    '''
+//}
+def gradlew(String... args) {
+    sh "./gradlew ${args.join(' ')} -s"
 }
