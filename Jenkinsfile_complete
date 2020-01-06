@@ -55,6 +55,7 @@ pipeline {
 
 def gradlew(command) {
     sh '''
+        echo this is the command ${command}
         ./gradlew ${command}
     '''
 }
