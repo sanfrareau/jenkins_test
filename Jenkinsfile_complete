@@ -12,7 +12,7 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Clean..'
-                gradlew('clean')
+                gradlew("clean")
             }
         }
 
